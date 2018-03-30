@@ -37,7 +37,7 @@
           <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2">
             <div class="wrap">
               <div class="wrap-block">
-                <a href="tel:+79106287744" class="header-phone">8-910-628-77-44</a>
+                <a href="tel:+79106287744" class="header-phone"><?php the_field( 'header_phone');?></a>
               </div>
             </div>
           </div>
@@ -58,11 +58,11 @@
             <h2><?php the_field('main_subtitle');?></h2>
             <div class="main-feature">
               <img src="<?php bloginfo('template_url'); ?>/assets/img/main/icon-1@1x.png" alt="piggy">
-              <p class="main-feature-p">Цены на 20%<br>ниже конкурентов</p>
+              <p class="main-feature-p"><?php the_field('advantage_1');?></p>
             </div>
             <div class="main-feature">
               <img src="<?php bloginfo('template_url'); ?>/assets/img/main/icon-2@1x.png" alt="clock">
-              <p class="main-feature-p">Качественная работа<br>за короткий срок</p>
+              <p class="main-feature-p"><?php the_field( 'advantage_2');?></p>
             </div>
           </div>
         </div>
@@ -71,8 +71,9 @@
           <div class="main-cta-block col-md-12 col-sm-12 col-xs-12">
 
             <div class="col-md-7 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
-              <b class="main-cta">Оставь заявку прямо сейчас</b>
-              <b class="main-cta-sub">и получи <span>бесплатный расчет</span> и <span>входную дверь</span> в подарок<sup>*</sup>!</b>
+              <b class="main-cta"><?php the_field( 'header_action_title');?></b>
+              <!--<b class="main-cta-sub">и получи <span>бесплатный расчет</span> и <span>входную дверь</span> в подарок<sup>*</sup>!</b>-->
+              <b class="main-cta-sub"><?php the_field( 'header_action_subtitle');?></b>
 
               <form method="post" name="first-form" action="mailer/smart.php" class="form">
 
@@ -668,8 +669,8 @@
           <div class="upsell-cta-block main-cta-block col-md-12 col-sm-12 col-xs-12">
 
             <div class="col-md-7 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
-              <b class="main-cta">Мы бесплатно проконсультируем вас</b>
-              <b class="main-cta-sub">по выбору <span>материала кровли</span> для Вашего дома!</b>
+              <b class="main-cta"><?php the_field('rufing_action_title');?></b>
+              <b class="main-cta-sub"><?php the_field('rufing_action_subtitle');?></b>
 
               <form method="post" name="second-form" action="mailer/smart.php" class="form">
 
@@ -784,7 +785,7 @@
           <div class="col-md-4 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-12 col-xs-offset-0">
             <div class="contacts-block">
               <img src="<?php bloginfo('template_url'); ?>/assets/img/contacts/1.png" alt="">
-              <a class="contacts-phone" href="tel:+79106287744">+7-910-628-77-44</a>
+              <a class="contacts-phone" href="tel:+79106287744">+<?php the_field('contacts_phone');?></a>
             </div>
           </div>
           <div class="col-md-4 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-12 col-xs-offset-0">
@@ -796,7 +797,7 @@
           <div class="col-md-4 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-12 col-xs-offset-0">
             <div class="contacts-block">
               <img src="<?php bloginfo('template_url'); ?>/assets/img/contacts/3.png" alt="">
-              <a href="mailto:arkada62@yandex.ru">arkada62@yandex.ru</a>
+              <a href="mailto:arkada62@yandex.ru"><?php the_field('contacts_email');?></a>
             </div>
           </div>
         </div>

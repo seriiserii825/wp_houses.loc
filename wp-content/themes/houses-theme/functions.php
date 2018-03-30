@@ -20,3 +20,8 @@ function theme_name_scripts() {
 	wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', array('jquery-custom'), null, true );
 	wp_enqueue_script( 'ie10-viewport-bug-js', 'http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js', array('jquery-custom'), null, true );
 }
+
+
+// добавляем логотип
+add_theme_support( 'custom-logo');
+

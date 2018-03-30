@@ -9,25 +9,18 @@
     <meta name="author" content="">
     <link rel="icon" href="/favicon.ico">
 
-    <title>Каркасные и кирпичные дома</title>
+    <title><?php bloginfo('name'); echo " | ";  bloginfo('description');?></title>
     
-    <!--<link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/slick-theme.css">
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="css/slicknav.min.css">-->
-    <!--<link rel="stylesheet" href="css/style.css">-->
-	
-	  <?php wp_head();?>
+    <?php wp_head();?>
    
   </head>
 
   <body>
-    <nav class="header" style="display: none;">
+    <nav class="header" style="display: block;">
       <div class="container">
         <div class="row">
           <div class="col-lg-2 col-lg-offset-0 col-md-2 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2">
-            <img src="<?php bloginfo('template_url'); ?>/assets/img/main/logo.png" alt="Arkada. Строительство и монтаж">
+            <?php the_custom_logo();?>
           </div>
           <div class="col-lg-5 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-0 col-sm-offset-0" id="menu-div">
             <div class="wrap">
@@ -57,12 +50,12 @@
       </div>
     </nav>
 
-    <main class="main">
+    <main class="main" style="background-image: url(<?php the_field('header_bg_img'); ?>);">
       <div class="container">
         <div class="row">
           <div class="col-md-5 col-md-offset-1">
-            <h1>Каркасные<br>и кирпичные дома</h1>
-            <h2>под ключ с гарантией</h2>
+            <h1><?php the_field('main_title');?></h1>
+            <h2><?php the_field('main_subtitle');?></h2>
             <div class="main-feature">
               <img src="<?php bloginfo('template_url'); ?>/assets/img/main/icon-1@1x.png" alt="piggy">
               <p class="main-feature-p">Цены на 20%<br>ниже конкурентов</p>

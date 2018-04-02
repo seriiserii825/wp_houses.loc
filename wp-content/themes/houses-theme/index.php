@@ -38,7 +38,7 @@
             <div class="wrap">
               <div class="wrap-block">
 
-                <a href="tel:+79106287744" class="header-phone"></a>
+                <a href="tel:+79106287744" class="header-phone"><?php the_field('header_phone'); ?></a>
 
               </div>
             </div>
@@ -671,13 +671,8 @@
           <div class="upsell-cta-block main-cta-block col-md-12 col-sm-12 col-xs-12">
 
             <div class="col-md-7 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
-<<<<<<< HEAD
               <b class="main-cta"><?php the_field('roofing_action_title'); ?></b>
               <b class="main-cta-sub"><?php the_field('roofing_action_subtitle'); ?></b>
-=======
-              <b class="main-cta"><?php the_field('rufing_action_title');?></b>
-              <b class="main-cta-sub"><?php the_field('rufing_action_subtitle');?></b>
->>>>>>> e6d6ac8f13163dd2342e9e75821b2ffdad5b8699
 
               <form method="post" name="second-form" action="mailer/smart.php" class="form">
 

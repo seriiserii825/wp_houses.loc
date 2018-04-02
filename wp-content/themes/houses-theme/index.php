@@ -155,424 +155,149 @@
           <li><a href="#shop" id="a-4">Кирпичные дома</a></li>
           <li><a href="#shop" id="a-5">Дома из блоков</a></li>
         </ul>
+
+        <?php $bloc_house = new WP_Query([
+           'category_name' => 'block_house',
+           'post_type' => 'post',
+           'posts_per_page' => 8,
+           'orderby' => 'date',
+           'order' => 'DESC'
+           ]); ?>
+
+          
+
         <!-- Дома из блоков -->
         <div class="shop-cards" id="shop-cards-5">
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/5/1.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/5/2.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/5/3.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/5/4.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/5/5.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/5/6.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/5/7.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/5/8.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
+            <?php if ( $bloc_house->have_posts() ) : while ( $bloc_house->have_posts() ) : $bloc_house->the_post(); ?>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="shop-card">
+                  <?php the_post_thumbnail(); ?>
+                  <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                  <p>Площадь <?php the_field('area'); ?> м<sup>2</sup></p>
+                  <span><?php the_field('old_price'); ?></span>
+                  <b><?php the_field('new_price'); ?></b>
+                  <button type="submit" class="popup-btn button-small">Оставить заявку</button>
+                </div>
+              </div> 
+            <?php endwhile; ?>
+            <!-- post navigation -->
+            <?php else: ?>
+              <h1>Постов в данной категории нет</h1>
+          <?php endif; ?> 
         </div>
+
+        <?php $bloc_house = new WP_Query([
+           'category_name' => 'brick_house',
+           'post_type' => 'post',
+           'posts_per_page' => 8,
+           'orderby' => 'date',
+           'order' => 'DESC'
+           ]); ?>
 
         <!-- Кирпичные дома -->
         <div class="shop-cards" id="shop-cards-4">
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/4/1.jpg" alt="">
-              <h3>Кирпичный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/4/2.jpg" alt="">
-              <h3>Кирпичный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/4/3.jpg" alt="">
-              <h3>Кирпичный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/4/4.jpg" alt="">
-              <h3>Кирпичный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/4/5.jpg" alt="">
-              <h3>Кирпичный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/4/6.jpg" alt="">
-              <h3>Кирпичный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/4/7.jpg" alt="">
-              <h3>Кирпичный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/3.jpg" alt="">
-              <h3>Кирпичный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
+          <?php if ( $bloc_house->have_posts() ) : while ( $bloc_house->have_posts() ) : $bloc_house->the_post(); ?>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="shop-card">
+                  <?php the_post_thumbnail(); ?>
+                  <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                  <p>Площадь <?php the_field('area'); ?> м<sup>2</sup></p>
+                  <span><?php the_field('old_price'); ?></span>
+                  <b><?php the_field('new_price'); ?></b>
+                  <button type="submit" class="popup-btn button-small">Оставить заявку</button>
+                </div>
+              </div> 
+            <?php endwhile; ?>
+            <!-- post navigation -->
+            <?php else: ?>
+              <h1>Постов в данной категории нет</h1>
+          <?php endif; ?> 
         </div>
+        
+        <?php $bloc_house = new WP_Query([
+           'category_name' => 'frame_house',
+           'post_type' => 'post',
+           'posts_per_page' => 8,
+           'orderby' => 'date',
+           'order' => 'DESC'
+           ]); ?>
 
         <!-- Каркасные дома -->
         <div class="shop-cards" id="shop-cards-3">
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/3/1.jpg" alt="">
-              <h3>Каркасный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/3/2.jpg" alt="">
-              <h3>Каркасный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/3/3.jpg" alt="">
-              <h3>Каркасный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/3/4.jpg" alt="">
-              <h3>Каркасный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/3/5.jpg" alt="">
-              <h3>Каркасный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/3/6.jpg" alt="">
-              <h3>Каркасный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/3/7.jpg" alt="">
-              <h3>Каркасный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/3/8.jpg" alt="">
-              <h3>Каркасный дом D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
+          <?php if ( $bloc_house->have_posts() ) : while ( $bloc_house->have_posts() ) : $bloc_house->the_post(); ?>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="shop-card">
+                  <?php the_post_thumbnail(); ?>
+                  <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                  <p>Площадь <?php the_field('area'); ?> м<sup>2</sup></p>
+                  <span><?php the_field('old_price'); ?></span>
+                  <b><?php the_field('new_price'); ?></b>
+                  <button type="submit" class="popup-btn button-small">Оставить заявку</button>
+                </div>
+              </div> 
+            <?php endwhile; ?>
+            <!-- post navigation -->
+            <?php else: ?>
+              <h1>Постов в данной категории нет</h1>
+          <?php endif; ?> 
         </div>
+
+        <?php $bloc_house = new WP_Query([
+           'category_name' => 'frame',
+           'post_type' => 'post',
+           'posts_per_page' => 8,
+           'orderby' => 'date',
+           'order' => 'DESC'
+           ]); ?>
 
         <!-- Сруб -->
         <div class="shop-cards" id="shop-cards-2">
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/2/1.jpg" alt="">
-              <h3>Сруб D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/2/2.jpg" alt="">
-              <h3>Сруб D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/2/3.jpg" alt="">
-              <h3>Сруб D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/2/4.jpg" alt="">
-              <h3>Сруб D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/2/5.jpg" alt="">
-              <h3>Сруб D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/2/6.jpg" alt="">
-              <h3>Сруб D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/2/7.jpg" alt="">
-              <h3>Сруб D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/2/8.jpg" alt="">
-              <h3>Сруб D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
+          <?php if ( $bloc_house->have_posts() ) : while ( $bloc_house->have_posts() ) : $bloc_house->the_post(); ?>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="shop-card">
+                  <?php the_post_thumbnail(); ?>
+                  <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                  <p>Площадь <?php the_field('area'); ?> м<sup>2</sup></p>
+                  <span><?php the_field('old_price'); ?></span>
+                  <b><?php the_field('new_price'); ?></b>
+                  <button type="submit" class="popup-btn button-small">Оставить заявку</button>
+                </div>
+              </div> 
+            <?php endwhile; ?>
+            <!-- post navigation -->
+            <?php else: ?>
+              <h1>Постов в данной категории нет</h1>
+          <?php endif; ?> 
         </div>
+
+        <?php $bloc_house = new WP_Query([
+           'category_name' => 'home_from_a_bar',
+           'post_type' => 'post',
+           'posts_per_page' => 8,
+           'orderby' => 'date',
+           'order' => 'DESC'
+           ]); ?>
 
         <!-- Дома из бруса -->
         <div class="shop-cards active" id="shop-cards-1">
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/1/1.jpg" alt="">
-              <h3>Дом из бруса D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/1/2.jpg" alt="">
-              <h3>Дом из бруса D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/1/3.jpg" alt="">
-              <h3>Дом из бруса D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/1/4.jpg" alt="">
-              <h3>Дом из бруса D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/1/5.jpg" alt="">
-              <h3>Дом из бруса D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/1/6.jpg" alt="">
-              <h3>Дом из бруса D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/1/7.jpg" alt="">
-              <h3>Дом из бруса D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/shop/1/8.jpg" alt="">
-              <h3>Дом из бруса D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
+          
+          <?php if ( $bloc_house->have_posts() ) : while ( $bloc_house->have_posts() ) : $bloc_house->the_post(); ?>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="shop-card">
+                  <?php the_post_thumbnail(); ?>
+                  <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                  <p>Площадь <?php the_field('area'); ?> м<sup>2</sup></p>
+                  <span><?php the_field('old_price'); ?></span>
+                  <b><?php the_field('new_price'); ?></b>
+                  <button type="submit" class="popup-btn button-small">Оставить заявку</button>
+                </div>
+              </div> 
+            <?php endwhile; ?>
+            <!-- post navigation -->
+            <?php else: ?>
+              <h1>Постов в данной категории нет</h1>
+          <?php endif; ?> 
+        
         </div>
   
       </div>

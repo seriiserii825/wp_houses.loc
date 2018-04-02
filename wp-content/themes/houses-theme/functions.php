@@ -25,3 +25,5 @@ function theme_name_scripts() {
 // добавляем логотип
 add_theme_support( 'custom-logo');
 
+//добавляем поддержку миниатюр
+add_theme_support( 'post-thumbnails' );
